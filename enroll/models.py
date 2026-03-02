@@ -8,17 +8,17 @@ class Student(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.name
+        return f"{self.name} ({self.email})"
 
 
 class Course(models.Model):
-    course_name = models.CharField(max_length=100)
+    course_name = models.CharField(max_length=120)
     course_code = models.CharField(max_length=20, unique=True)
     instructor = models.CharField(max_length=100)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.course_name
+        return f"{self.course_name} - {self.course_code}"
 
 
 class Enrollment(models.Model):
@@ -27,7 +27,7 @@ class Enrollment(models.Model):
     enrolled_on = models.DateField(auto_now_add=True)
 
     class Meta:
-        unique_together = ('student', 'course')
+        unique_together = ("student", "course")
 
     def __str__(self):
-        return f"{self.student} - {self.course}"
+        return f"{self.student} enrolled in {self.course}"
