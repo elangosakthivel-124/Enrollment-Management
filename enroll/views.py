@@ -1,4 +1,3 @@
-
 from django.shortcuts import render, redirect
 from .models import Student
 
@@ -25,5 +24,5 @@ def add_student(request):
 
 
 def student_list(request):
-    students = Student.objects.all().order_by("-id")
+    students = Student.objects.all()
     return render(request, "student_list.html", {"students": students})
