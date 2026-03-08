@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Enrollments</title>
+</head>
+
+<body>
+
+<h2>Enrollment List</h2>
+
+<table border="1">
+
+<tr>
+<th>ID</th>
+<th>Student</th>
+<th>Course</th>
+<th>Date</th>
+</tr>
+
+{% for e in enrollments %}
+
+<tr>
+<td>{{ e.id }}</td>
+<td>{{ e.student.name }}</td>
+<td>{{ e.course.course_name }}</td>
+<td>{{ e.enrolled_on }}</td>
+</tr>
+
+{% endfor %}
+
+</table>
+
+</body>
+</html>
