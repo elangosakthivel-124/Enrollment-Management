@@ -26,6 +26,41 @@
 <td>{{ e.course.course_name }}</td>
 <td>{{ e.enrolled_on }}</td>
 </tr>
+  <!DOCTYPE html>
+<html>
+
+<head>
+<title>Enrollment List</title>
+</head>
+
+<body>
+
+<h2>Enrollment List</h2>
+
+<table border="1">
+
+<tr>
+<th>ID</th>
+<th>Student</th>
+<th>Course</th>
+<th>Enrollment Date</th>
+</tr>
+
+{% for enrollment in enrollments %}
+
+<tr>
+<td>{{ enrollment.id }}</td>
+<td>{{ enrollment.student.name }}</td>
+<td>{{ enrollment.course.course_name }}</td>
+<td>{{ enrollment.enrolled_on }}</td>
+</tr>
+
+{% endfor %}
+
+</table>
+
+</body>
+</html>
 
 {% endfor %}
 
