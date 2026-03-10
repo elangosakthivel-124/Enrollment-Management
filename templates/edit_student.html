@@ -1,0 +1,17 @@
+<h2>Edit Student</h2>
+
+<form method="POST">
+{% csrf_token %}
+
+<input type="text" name="name" value="{{ student.name }}">
+<br><br>
+
+<input type="email" name="email" value="{{ student.email }}">
+<br><br>
+
+<input type="text" name="phone" value="{{ student.phone }}">
+<br><br>
+
+<button type="submit">Update</button>
+
+</form>
