@@ -13,5 +13,4 @@ urlpatterns = [
 
     path("enroll/", views.enroll_student, name="enroll_student"),
     path("enrollments/", views.enrollment_list, name="enrollment_list"),
-
 ]
