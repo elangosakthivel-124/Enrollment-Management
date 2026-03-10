@@ -1,21 +1,13 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-<title>Courses</title>
-</head>
-
-<body>
-
 <h2>Course List</h2>
 
 <table border="1">
 
 <tr>
 <th>ID</th>
-<th>Course Name</th>
-<th>Course Code</th>
+<th>Course</th>
+<th>Code</th>
 <th>Instructor</th>
+<th>Actions</th>
 </tr>
 
 {% for course in courses %}
@@ -25,15 +17,15 @@
 <td>{{ course.course_name }}</td>
 <td>{{ course.course_code }}</td>
 <td>{{ course.instructor }}</td>
+
+<td>
+<a href="/edit-course/{{ course.id }}/">Edit</a>
+|
+<a href="/delete-course/{{ course.id }}/">Delete</a>
+</td>
+
 </tr>
 
 {% endfor %}
 
 </table>
-
-<br>
-
-<a href="/add-course/">Add New Course</a>
-
-</body>
-</html>
