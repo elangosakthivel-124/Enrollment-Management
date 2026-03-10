@@ -1,11 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>Students</title>
-</head>
-
-<body>
-
 <h2>Student List</h2>
 
 <table border="1">
@@ -15,6 +7,7 @@
 <th>Name</th>
 <th>Email</th>
 <th>Phone</th>
+<th>Actions</th>
 </tr>
 
 {% for student in students %}
@@ -24,15 +17,15 @@
 <td>{{ student.name }}</td>
 <td>{{ student.email }}</td>
 <td>{{ student.phone }}</td>
+
+<td>
+<a href="/edit-student/{{ student.id }}/">Edit</a>
+|
+<a href="/delete-student/{{ student.id }}/">Delete</a>
+</td>
+
 </tr>
 
 {% endfor %}
 
 </table>
-
-<br>
-
-<a href="/add-student/">Add New Student</a>
-
-</body>
-</html>
