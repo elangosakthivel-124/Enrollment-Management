@@ -29,3 +29,33 @@
 {% endfor %}
 
 </table>
+<h2>Course List</h2>
+
+<form method="GET">
+<input type="text" name="q" placeholder="Search course">
+<button type="submit">Search</button>
+</form>
+
+<br>
+
+<table border="1">
+
+<tr>
+<th>ID</th>
+<th>Course Name</th>
+<th>Course Code</th>
+<th>Instructor</th>
+</tr>
+
+{% for course in courses %}
+
+<tr>
+<td>{{ course.id }}</td>
+<td>{{ course.course_name }}</td>
+<td>{{ course.course_code }}</td>
+<td>{{ course.instructor }}</td>
+</tr>
+
+{% endfor %}
+
+</table>
