@@ -135,6 +135,59 @@ def enroll_student(request):
 
 
 def enrollment_list(request):
+    from django.shortcuts import render
+from .models import Student, Course, Enrollment
+
+
+def home(request):
+    total_students = Student.objects.count()
+    total_courses = Course.objects.count()
+    total_enrollments = Enrollment.objects.count()
+
+    context = {
+        "total_students": total_students,
+        "total_courses": total_courses,
+        "total_enrollments": total_enrollments
+    }
+
+    return render(request, "home.html", context)
+
+
+# ---------- STUDENT SEARCH ----------
+
+def student_list(request):
+
+    query = request.GET.get("q")
+
+    if query:
+        students = Student.objects.filter(name__icontains=query)
+    else:
+        students = Student.objects.all()
+
+    return render(request, "student_list.html", {"students": students})
+
+
+# ---------- COURSE SEARCH ----------
+
+def course_list(request):
+
+    query = request.GET.get("q")
+
+    if query:
+        courses = Course.objects.filter(course_name__icontains=query)
+    else:
+        courses = Course.objects.all()
+
+    return render(request, "course_list.html", {"courses": courses})
+
+
+# ---------- ENROLLMENT LIST ----------
+
+def enrollment_list(request):
+
+    enrollments = Enrollment.objects.select_related("student", "course")
+
+    return render(request, "enrollment_list.html", {"enrollments": enrollments})
 
     enrollments = Enrollment.objects.select_related("student", "course")
 
