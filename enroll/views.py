@@ -87,3 +87,53 @@ def enrollment_list(request):
     enrollments = Enrollment.objects.select_related("student", "course")
 
     return render(request, "enrollment_list.html", {"enrollments": enrollments})
+    from django.shortcuts import render
+from django.core.paginator import Paginator
+from django.contrib.auth.decorators import login_required
+from .models import Student, Course, Enrollment
+
+
+@login_required
+def student_list(request):
+
+    query = request.GET.get("q")
+
+    if query:
+        student_list = Student.objects.filter(name__icontains=query)
+    else:
+        student_list = Student.objects.all()
+
+    paginator = Paginator(student_list, 5)  # 5 students per page
+    page_number = request.GET.get("page")
+    students = paginator.get_page(page_number)
+
+    return render(request, "student_list.html", {"students": students})
+
+
+@login_required
+def course_list(request):
+
+    query = request.GET.get("q")
+
+    if query:
+        course_list = Course.objects.filter(course_name__icontains=query)
+    else:
+        course_list = Course.objects.all()
+
+    paginator = Paginator(course_list, 5)
+    page_number = request.GET.get("page")
+    courses = paginator.get_page(page_number)
+
+    return render(request, "course_list.html", {"courses": courses})
+
+
+@login_required
+def enrollment_list(request):
+
+    enrollment_list = Enrollment.objects.select_related("student", "course")
+
+    paginator = Paginator(enrollment_list, 5)
+    page_number = request.GET.get("page")
+    enrollments = paginator.get_page(page_number)
+
+    return render(request, "enrollment_list.html", {"enrollments": enrollments})
