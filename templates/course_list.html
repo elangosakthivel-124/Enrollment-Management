@@ -59,3 +59,49 @@
 {% endfor %}
 
 </table>
+
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Course List</h2>
+
+<table border="1">
+
+<tr>
+<th>ID</th>
+<th>Course Name</th>
+<th>Course Code</th>
+<th>Instructor</th>
+</tr>
+
+{% for course in courses %}
+
+<tr>
+<td>{{ course.id }}</td>
+<td>{{ course.course_name }}</td>
+<td>{{ course.course_code }}</td>
+<td>{{ course.instructor }}</td>
+</tr>
+
+{% endfor %}
+
+</table>
+
+<br>
+
+<div>
+
+{% if courses.has_previous %}
+<a href="?page={{ courses.previous_page_number }}">Previous</a>
+{% endif %}
+
+Page {{ courses.number }} of {{ courses.paginator.num_pages }}
+
+{% if courses.has_next %}
+<a href="?page={{ courses.next_page_number }}">Next</a>
+{% endif %}
+
+</div>
+
+{% endblock %}
