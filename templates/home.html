@@ -51,3 +51,14 @@
 <br><br>
 
 <a href="/logout/">Logout</a>
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Dashboard</h2>
+
+<p>Total Students : {{ total_students }}</p>
+<p>Total Courses : {{ total_courses }}</p>
+<p>Total Enrollments : {{ total_enrollments }}</p>
+
+{% endblock %}
